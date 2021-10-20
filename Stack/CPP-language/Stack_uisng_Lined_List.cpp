@@ -20,62 +20,63 @@ public:
 		}
 	}
 	bool isEmpty() {
-		return top == nullptr;
+		return top ? 0: 1;
 	}
 	int isFull() {
 		Node* t = new Node;
-		int r;
-		if (t == nullptr)
-			r = 1;
-		else
-			r = 0;
+		int r = t ? 1 : 0;
 		delete t;
-
 		return r;
 	}
 	void push(int val) {
 		Node* t = new Node;
-
 		if (t == nullptr) {
-			std::cout << "Stack is Overflow" << std::endl;
-			return;
+			std::cout << "Stack Overflow!" << std::endl;
 		}
-
-		t->data = val;
-		t->next = top;
-		top = t;
+		else {
+			t->data = val;
+			t->next = top;
+			top = t;
+		}
 	}
 	int pop() {
+		Node* p;
+		int x = -1;
 		if (top == nullptr) {
-			std::cout << "Stack is Underflow" << std::endl;
-			exit(1);
+			std::cout << "Stack Underflow!" << std::endl;
 		}
-
-		Node* p = top;
-		int x = p->data;
-
-		top = top->next;
-		
-		delete p;
-
+		else {
+			p = top;
+			x = p->data;
+			top = top->next;
+			delete p;
+		}
 		return x;
 	}
 	int peek(int pos) {
-		Node* p = top;
-		for (int i = 0; p != nullptr, i < pos - 1; i++)
-			p = p->next;
-
-		if (p != nullptr)
-			return p->data;
-		else
+		if (isEmpty()) {
 			return -1;
+		}
+		else {
+			Node* p = top;
+
+			for (int i = 0; p != nullptr && i < pos - 1; i++) {
+				p = p->next;
+			}
+
+			if (p != nullptr) {
+				return p->data;
+			}
+			else {
+				return -1;
+			}
+		}
 	}
 	int Top() {
-		if (top == nullptr) {
-			std::cout << "Stack is Underflow" << std::endl;
-			exit(1);
+		if (top) {
+			return top->data;
 		}
-		return top->data;
+		return -1;
 	}
 	void display() {
 		Node* p = top;
@@ -95,7 +96,7 @@ int main() {
 	st.push(22);
 	st.push(33);
 	st.push(44);
-	st.peek(55);
+	st.push(55);
 
 	std::cout << st.pop() << " has been popped" << std::endl;
 
