@@ -10,6 +10,9 @@ public:
 		s = new int[size];
 		top = -1;
 	}
+	~Stack() {
+		delete[] s;
+	}
 	bool isEmpty() {
 		return top == -1;
 	}
@@ -43,15 +46,16 @@ public:
 		}
 		return s[top];
 	}
+	void display() {
+		for (int i = top; i >= 0; i--)
+			std::cout << s[i] << ' ';
+		std::cout << std::endl;
+	}
 };
 
 int main() {
-	int n;
-	char ch;
-	std::cout << "Enter size of Stack: ";
-	std::cin >> n;
 	
-	Stack st(n);
+	Stack st(10);
 
 	st.push(5);
 	st.push(15);
@@ -65,7 +69,9 @@ int main() {
 	
 	std::cout << "top is: " << st.Top() << std::endl;
 
-	std::cout << "peek is: " << st.peek(1) << std::endl;
+	std::cout << "peek is: " << st.peek(2) << std::endl;
+
+	st.display();
 	
 	return 0;
 
