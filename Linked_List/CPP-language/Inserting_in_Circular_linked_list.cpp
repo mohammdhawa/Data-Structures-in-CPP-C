@@ -88,6 +88,23 @@ public:
 			p->next = newNode;
 		}
 	}
+	void insertEnd(int x) {
+        Node* t = new Node;
+        t->data = x;
+
+        if (head == nullptr) {
+            head = t;
+            head->next = head;
+        }
+        else {
+            Node* last = head;
+            while (last->next != head)
+                last = last->next;
+
+            t->next = head;
+            last->next = t;
+        }
+    }
 
 
 };
