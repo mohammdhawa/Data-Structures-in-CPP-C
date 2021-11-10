@@ -62,7 +62,7 @@ class binaryTree {
 	Node* root;
 public:
 	binaryTree() {
-		root = new Node;
+		root = nullptr;
 	}
 	~binaryTree() {
 		destroyRecursive(root);
@@ -75,7 +75,8 @@ public:
 
 		std::cout << "Enter root value: ";
 		std::cin >> x;
-
+		
+		root = new Node;
 		root->data = x;
 		q.enQueue(root);
 
