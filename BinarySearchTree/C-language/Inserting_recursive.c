@@ -1,11 +1,4 @@
-// A utility function to create a new BST node
-struct Node* newNode(int item)
-{
-    struct Node*temp = (struct Node*)malloc(sizeof(struct Node));
-    temp->data = item;
-    temp->left = temp->right = NULL;
-    return temp;
-};
+
 
 struct Node* insert(struct Node*p, int key)
 {
