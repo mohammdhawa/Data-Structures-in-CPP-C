@@ -6,6 +6,15 @@ void swap(int& a, int& b) {
 	b = temp;
 }
 
+int findMax(int A[], int n) {
+	int mx = A[0];
+	for (int i = 1; i < n; i++) {
+		if (mx < A[i])
+			mx = A[i];
+	}
+	return mx;
+}
+
 struct Node {
 	int data;
 	Node* next;
