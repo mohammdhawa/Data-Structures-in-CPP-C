@@ -1,6 +1,15 @@
 #include <iostream>
 #include <vector>
 
+void Insert(int A[], int n) {
+    int i = n;
+    int temp = A[n];
+    while (i > 0 && temp > A[i % 2 == 0 ? (i / 2) - 1 : i / 2]) {
+        A[i] = A[i % 2 == 0 ? (i / 2) - 1 : i / 2];
+        i = i % 2 == 0 ? (i / 2) - 1 : i / 2;
+    }
+    A[i] = temp;
+}
 
 // or using stl
 void insert_stl(std::vector<int>& vec, int key) {
